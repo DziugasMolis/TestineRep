@@ -12,13 +12,6 @@ public class Main {
         System.out.println("Iveskite skaicius ");
         Integer skaicius = reader.nextInt();
         reader.close();
-
-        if(skaicius > 0) {
-            System.out.println("Teigiamas");
-        } else if (skaicius == 0) {
-            System.out.println("Lygus nuliui");
-        } else {
-            System.out.println("Neigiamas");
-        }
+        
     }
 }
