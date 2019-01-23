@@ -5,7 +5,7 @@ public class Switchas {
 
     public static void main(String[] args) {
 
-        Integer skaicius = 2;
+        Integer skaicius = 9999;
         gautiSkaiciuString(skaicius);
     }
 

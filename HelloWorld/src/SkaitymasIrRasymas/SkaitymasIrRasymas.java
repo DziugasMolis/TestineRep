@@ -5,46 +5,62 @@ import java.io.*;
 public class SkaitymasIrRasymas {
 
     public static void main(String[] args) {
-        String file = "C:\\testrep\\HelloWorld\\src\\SkaitymasIrRasymas\\Test.txt";
-        String fileRasymui = "C:\\testrep\\HelloWorld\\src\\SkaitymasIrRasymas\\Irasytas.txt";
+        String file = "C:\\TestineRep\\HelloWorld\\src\\SkaitymasIrRasymas\\Test.txt";
+        String fileRasymui = "C:\\TestineRep\\HelloWorld\\src\\SkaitymasIrRasymas\\Irasytas.txt";
         try {
-            Skaityti(file);
-            Rasyti(fileRasymui);
+            Integer[] nuskaitytiSkaiciai = Skaityti(file);
+            Integer gautaSuma = Suma(nuskaitytiSkaiciai);
+            Rasyti(fileRasymui, gautaSuma);
         } catch (IOException e) {
             e.printStackTrace();
         }
     }
 
-    public static void Skaityti(String failas) throws IOException {
+    public static Integer Suma(Integer[] skaiciuMasyvas) {
+        Integer suma = 0;
+        for (int i = 0; i < skaiciuMasyvas.length; i++) {
+            suma += skaiciuMasyvas[i];
+        }
+        return suma;
+    }
 
+    public static Integer[] Skaityti(String failas) throws IOException {
+
+        Integer[] masyvas = null;
         BufferedReader br = new BufferedReader(new FileReader(failas));
         try {
             StringBuilder sb = new StringBuilder();
+            String nReiksme = br.readLine();
+            Integer n = Integer.parseInt(nReiksme);
+            masyvas = new Integer[n];
             String line = br.readLine();
 
             while (line != null) {
                 sb.append(line);
                 sb.append(System.lineSeparator());
-                System.out.println(line);
-                line = br.readLine();
+                String[] skaiciai = line.split(" ");
+                for (int i = 0; i < skaiciai.length; i++) {
+                    masyvas[i] = Integer.parseInt(skaiciai[i]);
+                }
             }
-            String everything = sb.toString();
         } catch (FileNotFoundException ex) {
             System.out.println("Failas nerastas");
         } finally {
             br.close();
         }
+
+        return masyvas;
     }
 
-    public static void Rasyti(String failas) throws IOException {
+    public static void Rasyti(String failas, Integer ats) throws IOException {
         BufferedWriter output = null;
         try {
             output = new BufferedWriter(new FileWriter(failas));
-            output.write("abcd");
-        } catch ( IOException e ) {
+            output.write("Gauta suma lygi = " + ats);
+        } catch (IOException e) {
             e.printStackTrace();
         } finally {
-            if ( output != null ) {
+            if (output != null) {
                 output.close();
             }
         }

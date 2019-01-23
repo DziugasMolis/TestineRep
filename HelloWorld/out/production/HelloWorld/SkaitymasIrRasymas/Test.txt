@@ -1,3 +1,2 @@
-Labas vakaras,
-
-Kaip jums sekasi?
+8
+1 5 6 8 4 2 3 6
