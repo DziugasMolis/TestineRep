@@ -18,7 +18,7 @@ public class SkaitymasIrRasymas {
 
     public static Integer Suma(Integer[] skaiciuMasyvas) {
         Integer suma = 0;
-        for (int i = 0; i < skaiciuMasyvas.length; i++) {
+        for(int i = 0; i < skaiciuMasyvas.length;i++) {
             suma += skaiciuMasyvas[i];
         }
         return suma;
@@ -39,9 +39,10 @@ public class SkaitymasIrRasymas {
                 sb.append(line);
                 sb.append(System.lineSeparator());
                 String[] skaiciai = line.split(" ");
-                for (int i = 0; i < skaiciai.length; i++) {
+                for(int i = 0; i < skaiciai.length;i++) {
                     masyvas[i] = Integer.parseInt(skaiciai[i]);
                 }
+                line = br.readLine();
             }
         } catch (FileNotFoundException ex) {
             System.out.println("Failas nerastas");
@@ -57,10 +58,10 @@ public class SkaitymasIrRasymas {
         try {
             output = new BufferedWriter(new FileWriter(failas));
             output.write("Gauta suma lygi = " + ats);
-        } catch (IOException e) {
+        } catch ( IOException e ) {
             e.printStackTrace();
         } finally {
-            if (output != null) {
+            if ( output != null ) {
                 output.close();
             }
         }
