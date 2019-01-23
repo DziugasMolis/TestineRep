@@ -2,6 +2,9 @@ package SkaitymasIrRasymas;
 
 import java.io.*;
 
+/*
+7 uzduotis
+ */
 public class SkaitymasIrRasymas {
 
     public static void main(String[] args) {
@@ -10,7 +13,7 @@ public class SkaitymasIrRasymas {
         try {
             Integer[] nuskaitytiSkaiciai = Skaityti(file);
             Integer gautaSuma = Suma(nuskaitytiSkaiciai);
-            Rasyti(fileRasymui, gautaSuma);
+            Rasyti(fileRasymui, gautaSuma, nuskaitytiSkaiciai);
         } catch (IOException e) {
             e.printStackTrace();
         }
@@ -18,7 +21,7 @@ public class SkaitymasIrRasymas {
 
     public static Integer Suma(Integer[] skaiciuMasyvas) {
         Integer suma = 0;
-        for(int i = 0; i < skaiciuMasyvas.length;i++) {
+        for (int i = 0; i < skaiciuMasyvas.length; i++) {
             suma += skaiciuMasyvas[i];
         }
         return suma;
@@ -39,7 +42,7 @@ public class SkaitymasIrRasymas {
                 sb.append(line);
                 sb.append(System.lineSeparator());
                 String[] skaiciai = line.split(" ");
-                for(int i = 0; i < skaiciai.length;i++) {
+                for (int i = 0; i < skaiciai.length; i++) {
                     masyvas[i] = Integer.parseInt(skaiciai[i]);
                 }
                 line = br.readLine();
@@ -53,15 +56,18 @@ public class SkaitymasIrRasymas {
         return masyvas;
     }
 
-    public static void Rasyti(String failas, Integer ats) throws IOException {
+    public static void Rasyti(String failas, Integer ats, Integer[] masyvas) throws IOException {
         BufferedWriter output = null;
         try {
             output = new BufferedWriter(new FileWriter(failas));
-            output.write("Gauta suma lygi = " + ats);
-        } catch ( IOException e ) {
+            output.write("Gauta suma lygi = " + ats + "\n");
+            for (int i = 0; i < masyvas.length; i++) {
+                output.write(masyvas[i] + " ");
+            }
+        } catch (IOException e) {
             e.printStackTrace();
         } finally {
-            if ( output != null ) {
+            if (output != null) {
                 output.close();
             }
         }
