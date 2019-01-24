@@ -37,6 +37,7 @@ public class uzduotis8 {
                 nuskaitytasTekstas += line + " ";
                 line = br.readLine();
             }
+
         } catch (FileNotFoundException ex) {
             System.out.println("Failas nerastas");
         } finally {

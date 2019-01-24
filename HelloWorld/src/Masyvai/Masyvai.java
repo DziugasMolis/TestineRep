@@ -18,9 +18,27 @@ public class Masyvai {
 //        SpausdintiMasyva(sveikuSkaiciuMasyvas);
 
 //        sveikuSkaiciuMasyvas = MinMaxRikiavimas(sveikuSkaiciuMasyvas);
-//        SpausdintiMasyva(sveikuSkaiciuMasyvas);
+        sveikuSkaiciuMasyvas = mazesniUzVidurki(sveikuSkaiciuMasyvas);
+        SpausdintiMasyva(sveikuSkaiciuMasyvas);
     }
-
+    //Pašalinti visus elementus mažesnius už vidurkį
+    public static Integer[] mazesniUzVidurki(Integer[] masyvas) {
+        Double suma = 0.0;
+        for(int i = 0; i < masyvas.length; i++) {
+            suma += masyvas[i];
+        }
+        Double vidurkis = suma / masyvas.length;
+        Integer[] mazesniUzVidurki = null;
+        for(int i = 0; i < masyvas.length; i++) {
+            if(vidurkis > masyvas[i]) {
+                if(mazesniUzVidurki == null) {
+                    mazesniUzVidurki = new Integer[0];
+                }
+                mazesniUzVidurki = pridetiElementa(mazesniUzVidurki, masyvas[i]);
+            }
+        }
+        return mazesniUzVidurki;
+    }
 
     public static Integer[] pridetiElementa(Integer[] masyvas, Integer skaicius) {
         masyvas = Arrays.copyOf(masyvas, masyvas.length + 1);
@@ -65,23 +83,19 @@ public class Masyvai {
 
     public static Integer[] MinMaxRikiavimas(Integer[] masyvas) {
         int temp;
-        for (int i = 0; i < masyvas.length- 1; i++)
-        {
+        for (int i = 0; i < masyvas.length - 1; i++) {
             /* find the min element in the unsorted a[j .. n-1] */
             /* assume the min is the first element */
             int minIndeksas = i;
             /* test against elements after j to find the smallest */
-            for (int j = i+1; j < masyvas.length; j++)
-            {
+            for (int j = i + 1; j < masyvas.length; j++) {
                 /* if this element is less, then it is the new minimum */
-                if (masyvas[j] < masyvas[minIndeksas])
-                {
+                if (masyvas[j] < masyvas[minIndeksas]) {
                     /* found new minimum; remember its index */
                     minIndeksas = j;
                 }
             }
-            if (minIndeksas != i)
-            {
+            if (minIndeksas != i) {
                 temp = masyvas[i];
                 masyvas[i] = masyvas[minIndeksas];
                 masyvas[minIndeksas] = temp;
