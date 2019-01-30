@@ -8,8 +8,8 @@ public class Ciklas {
 
         Integer suma = 0;
         for (int i = 0; i < sveikuSkaiciuMasyvas.length; i++) {
-            if (suma > 10) {
-                break;
+            if (i < 2) {
+                continue;
             }
             suma += sveikuSkaiciuMasyvas[i];
 

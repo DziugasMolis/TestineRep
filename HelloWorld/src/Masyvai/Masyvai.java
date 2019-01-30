@@ -5,9 +5,10 @@ import java.util.Arrays;
 public class Masyvai {
     public static void main(String[] args) {
         Integer[] sveikuSkaiciuMasyvas = {
-                2, 3, 4, 2, 9, 8, 7, 4, 1, 5
+                1, 2, 3, 4, 5
         };
-
+        Integer[] mas = new Integer[0];
+        System.out.println(mas);
 //        sveikuSkaiciuMasyvas = pridetiElementa(sveikuSkaiciuMasyvas, 10);
 //        SpausdintiMasyva(sveikuSkaiciuMasyvas);
 //        sveikuSkaiciuMasyvas = pasalintiPaskutiniElementa(sveikuSkaiciuMasyvas);
@@ -18,20 +19,21 @@ public class Masyvai {
 //        SpausdintiMasyva(sveikuSkaiciuMasyvas);
 
 //        sveikuSkaiciuMasyvas = MinMaxRikiavimas(sveikuSkaiciuMasyvas);
-        sveikuSkaiciuMasyvas = mazesniUzVidurki(sveikuSkaiciuMasyvas);
-        SpausdintiMasyva(sveikuSkaiciuMasyvas);
+//        sveikuSkaiciuMasyvas = mazesniUzVidurki(sveikuSkaiciuMasyvas);
+//        SpausdintiMasyva(sveikuSkaiciuMasyvas);
     }
+
     //Pašalinti visus elementus mažesnius už vidurkį
     public static Integer[] mazesniUzVidurki(Integer[] masyvas) {
         Double suma = 0.0;
-        for(int i = 0; i < masyvas.length; i++) {
+        for (int i = 0; i < masyvas.length; i++) {
             suma += masyvas[i];
         }
         Double vidurkis = suma / masyvas.length;
         Integer[] mazesniUzVidurki = null;
-        for(int i = 0; i < masyvas.length; i++) {
-            if(vidurkis > masyvas[i]) {
-                if(mazesniUzVidurki == null) {
+        for (int i = 0; i < masyvas.length; i++) {
+            if (vidurkis > masyvas[i]) {
+                if (mazesniUzVidurki == null) {
                     mazesniUzVidurki = new Integer[0];
                 }
                 mazesniUzVidurki = pridetiElementa(mazesniUzVidurki, masyvas[i]);
